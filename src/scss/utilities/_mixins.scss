@@ -1,0 +1,86 @@
+/*==================================
+=            Responsive            =
+==================================*/
+
+@mixin viewport-unit($property, $pixel, $context, $axis: vw) {
+  #{$property}: #{$pixel}px;
+  #{$property}: #{_($pixel, $context)}#{$axis};
+}
+
+/*=====  End of Responsive  ======*/
+
+/*===========================
+=            REM            =
+===========================*/
+
+@mixin rem($properties, $values...) {
+  @if type-of($properties) == "map" {
+    @each $property, $values in $properties {
+      @include rem($property, $values...);
+    }
+  } @else {
+    @each $property in $properties {
+      @if $rem-fallback or $rem-px-only {
+        #{$property}: rem-convert(px, $values...);
+      }
+      @if not $rem-px-only {
+        #{$property}: rem-convert(rem, $values...);
+      }
+    }
+  }
+}
+
+/*=====  End of REM  ======*/
+
+@mixin svg($file, $width, $height) {
+  background: transparent image-url($file) center center no-repeat;
+  @include rem(background-size, $width $height);
+  @include rem(width, $width);
+  @include rem(height, $height);
+}
+
+@mixin img($file, $proportion: 1) {
+  background: transparent image-url($file) center center no-repeat;
+  background-size: (image-width($file) * $proportion) (image-height($file) * $proportion);
+  width: image-width($file) * $proportion;
+  height: image-height($file) * $proportion;
+  display: block;
+  padding: 1px;
+  box-sizing: content-box;
+}
+
+@mixin align($direction: both) {
+  position: absolute;
+  transform-style: preserve-3d;
+
+  @if index("horizontal" "h", $direction) {
+    left: 50%;
+    transform: translateX(-50%);
+  } @else if index("vertical" "v", $direction) {
+    top: 50%;
+    transform: translateY(-50%);
+  } @else if index("none", $direction) {
+    top: auto;
+    left: auto;
+    transform: translate(0, 0);
+  } @else {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin theme {
+  @each $key, $value in $themeColors {
+    &.is-theme-#{$key} {
+      $color: $value !global;
+      @content;
+    }
+  }
+}
+
+@mixin transition($property...) {
+  transition-property: $property;
+  transition-duration: $transition-duration;
+  transition-timing-function: $transition-easing;
+}

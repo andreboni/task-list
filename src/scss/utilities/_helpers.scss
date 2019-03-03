@@ -1,0 +1,17 @@
+.is-rounded {
+  border-radius: 100%;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.is-visually-hidden {
+  opacity: 0;
+}
+
+.is-mobile-hidden {
+  @media #{$only-smartphone} {
+    display: none!important;
+  }
+}

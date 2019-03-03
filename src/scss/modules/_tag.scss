@@ -1,0 +1,25 @@
+.tag {
+  vertical-align: baseline;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 0.4rem .6rem;
+  background-color: darken(white, 5%);
+  border-radius: 1000px;
+  margin: 0 .2rem;
+  font-size: .65rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.tag .tag-label {
+  display: none;
+  @media #{$tablet} {
+    display: inline-block;
+  }
+}
+
+.tag .tag-icon:first-child, .tag .tag-icon:last-child {
+  @media #{$only-smartphone} {
+    margin-right: 0!important;
+  }
+}

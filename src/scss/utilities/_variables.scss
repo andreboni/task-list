@@ -1,0 +1,54 @@
+/*===========================
+=            REM            =
+===========================*/
+
+$rem-baseline: 16px !default;
+$rem-fallback: false !default;
+$rem-px-only: false !default;
+/*=====  End of REM  ======*/
+
+/*=====================================
+=            Media Queries            =
+=====================================*/
+
+$only-smartphone: "(max-width: 599px)";
+$phone: "(min-width: 0px)";
+$smartphone: "(min-width: 319px)";
+$only-tablet: "(min-width: 600px) and (max-width: 1024px)";
+$tablet: "(min-width: 600px)";
+$only-smartphone-and-tablet: "(max-width: 1024px)";
+$only-desktop: "(min-width: 1025px) and (max-width: 1499px)";
+$desktop: "(min-width: 1025px)";
+$widescreen: "(min-width: 1300px)";
+/*=====  End of Media Queries  ======*/
+
+/*==============================
+=            Colors            =
+==============================*/
+
+$themeColors: ( 'black': #000, 'white': #fff, 'celery': #6bb528, 'martinique': #1f1925);
+/*=====  End of Colors  ======*/
+
+/*================================
+=            Defaults            =
+================================*/
+
+$roboto: 'Roboto',
+sans-serif;
+$roboto-slab: 'Roboto Slab',
+sans-serif;
+$shadow-1: 0px 5px 50px 0px rgba(black, .1), 0px 3px 5px 0px rgba(black, .1);
+$rounded: 5px;
+$transition-duration: 300ms;
+$transition-easing: ease;
+// $transition-easing: cubic-bezier(0, 0.95, 0.03, 1.04);
+/*=====  End of Defaults  ======*/
+
+/*==============================
+=            Layout            =
+==============================*/
+
+$padding: 55px;
+$padding-mobile: 15px;
+$column-gutter: 25px;
+/*=====  End of Layout  ======*/
