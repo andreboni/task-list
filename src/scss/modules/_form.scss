@@ -11,15 +11,19 @@ select {
     appearance: none;
     background-color: darken(white, 5%);
     border: 0;
-    padding: .5rem .7rem;
+    padding: 1rem;
     border-radius: 5px;
     font-family: inherit;
-    font-size: .8rem;
+    font-size: 1rem;
     @include transition(background, box-shadow, color, border);
 
     &:hover, &:focus {
       outline: 0;
       background-color: darken(white, 10%);
+    }
+    @media #{$desktop} {
+      padding: .5rem .7rem;
+      font-size: .8rem;
     }
   }
 
