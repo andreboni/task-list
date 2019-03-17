@@ -1,9 +1,9 @@
 import React from 'react';
 import { getTasks } from '../model/getTasks';
 import PriorityTag from './PriorityTag';
+import EditableText from './EditableText';
 
 const TasksList = (props) => {
-
   if (!props.tasks.length) {
     return <p>Nenhuma tarefa adicionada ainda.</p>
   }
@@ -16,7 +16,8 @@ const TasksList = (props) => {
         {filteredTasks.map(task => (
           <li className={task.done ? 'is-completed' : ''} key={task.id}>
             <input readOnly onClick={() => props.handleCheckTask(task.id)} checked={task.done} type="checkbox" />
-            <PriorityTag priority={task.priority} /> <span>{task.label}</span>
+            <PriorityTag priority={task.priority} /> 
+            <EditableText callback={(text) => props.handleEditText(task.id, text)} text={task.label} />
           </li>
         ))}
       </ul>}

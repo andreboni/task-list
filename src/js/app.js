@@ -16,6 +16,15 @@ class App extends React.Component {
       tasks: [...this.state.tasks, task]
     });
   }
+  handleEditText = (id, text) => {
+    const tasks = this.state.tasks.map( task => {
+      if(task.id === id) {
+        task.label = text;
+      }
+      return task;
+    });
+    this.setState({ tasks });
+  } 
   handleCleanList = () => {
     this.setState({
       tasks: []
@@ -53,6 +62,7 @@ class App extends React.Component {
         <div className="layout-grow">
           <Tasks
             handleCheckTask={this.handleCheckTask.bind(this)}
+            handleEditText={this.handleEditText}
             tasks={this.state.tasks} />
         </div>
         <div className="layout-fixed">

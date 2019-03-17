@@ -6,7 +6,7 @@ form {
 button,
 input,
 select {
-  &:not([type=checkbox]):not([type=radio]) {
+  &:not([type=checkbox]):not([type=radio]):not(.is-unstyled) {
     -webkit-appearance: none;
     appearance: none;
     background-color: darken(white, 5%);
@@ -55,5 +55,23 @@ label {
     font-weight: normal;
     text-transform: none;
     font-size: .8rem;
+  }
+}
+
+button {
+  &:active {
+    transform: scale(.95);
+  }
+}
+
+button.is-text {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  font-size: .8rem;
+  font-family: inherit;
+  &:hover {
+    text-decoration: underline;
   }
 }

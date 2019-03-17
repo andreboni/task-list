@@ -22,48 +22,52 @@ export default class Tasks extends React.Component {
       )
     }
 
+    const TaskFilter = () => (
+      <div className="layout-fixed grid is-vertical-bottomed is-small">
+        <div className="grid-division">
+          <label htmlFor="show-completed">
+            <span className="tag-icon fa fa-search"></span>
+            Pesquisar</label>
+          <input autoFocus type="search" value={this.state.search} onChange={e => {
+            this.setState({
+              search: e.target.value
+            })
+          }} className="is-full" placeholder="Descrição..." />
+        </div>
+        <div className="grid-division is-narrow">
+          <label htmlFor="priority">
+            {this.state.priority === -1 && <span className="tag-icon fa fa-sort-amount-down"></span>}
+            {this.state.priority === 1 && <span className="tag-icon fa fa-sort-amount-up"></span>}
+            Ordernar por</label>
+          <select id="priority" value={this.state.priority} onChange={e => {
+            this.setState({
+              priority: parseInt(e.target.value)
+            })
+          }} className="is-full">
+            <option value="-1">Maior prioridade</option>
+            <option value="1">Menor prioridade</option>
+          </select>
+        </div>
+        <div className="grid-division is-narrow">
+          <label htmlFor="show-completed">
+            <span className="tag-icon fa fa-filter"></span>
+            Ocultar</label>
+          <input onChange={e => {
+            this.setState({
+              showCompleted: !this.state.showCompleted
+            })
+          }} checked={this.state.showCompleted} type="checkbox" id="show-completed" />
+          <label htmlFor="show-completed" className="is-inline is-discreet">Finalizadas</label>
+        </div>
+      </div>
+    );
+
     return (
       <div className="layout">
-        <div className="layout-fixed grid is-vertical-bottomed is-small">
-          <div className="grid-division">
-            <label htmlFor="show-completed">
-              <span className="tag-icon fa fa-search"></span>
-              Pesquisar</label>
-            <input type="text" value={this.state.search} onChange={e => {
-              this.setState({
-                search: e.target.value
-              })
-            }} className="is-full" placeholder="Descrição..." />
-          </div>
-          <div className="grid-division is-narrow">
-            <label htmlFor="priority">
-              {this.state.priority === -1 && <span className="tag-icon fa fa-sort-amount-down"></span>}
-              {this.state.priority === 1 && <span className="tag-icon fa fa-sort-amount-up"></span>}
-              Ordernar por</label>
-            <select id="priority" value={this.state.priority} onChange={e => {
-              this.setState({
-                priority: parseInt(e.target.value)
-              })
-            }} className="is-full">
-              <option value="-1">Maior prioridade</option>
-              <option value="1">Menor prioridade</option>
-            </select>
-          </div>
-          <div className="grid-division is-narrow">
-            <label htmlFor="show-completed">
-              <span className="tag-icon fa fa-filter"></span>
-              Ocultar</label>
-            <input onChange={e => {
-              this.setState({
-                showCompleted: !this.state.showCompleted
-              })
-            }} checked={this.state.showCompleted} type="checkbox" id="show-completed" />
-            <label htmlFor="show-completed" className="is-inline is-discreet">Finalizadas</label>
-          </div>
-        </div>
-
+        <TaskFilter />
         <TasksList
           handleCheckTask={this.props.handleCheckTask}
+          handleEditText={this.props.handleEditText}
           tasks={this.props.tasks}
           filter={this.state} />
 

@@ -3,7 +3,7 @@
 }
 
 body * {
-  @include transition(color, background, opacity);
+  @include transition(color, background, opacity, transform);
 }
 
 html {
@@ -53,7 +53,7 @@ ol {
     padding: 1rem .5rem;
 
     &:hover {
-      background: darken(white, 5%);
+      // background: darken(white, 5%);
     }
   }
 
